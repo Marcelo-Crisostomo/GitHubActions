@@ -1,0 +1,20 @@
+# 👷 Nombre visible del workflow
+name: Mensaje automático al hacer push
+
+# 🧲 Cuándo debe ejecutarse este flujo
+on:
+  push:             # Se activa cuando alguien hace push
+    branches:
+      - master        # Solo si el push fue a la rama 'master'
+
+# 🧱 Qué tareas (jobs) va a ejecutar este flujo
+jobs:
+  mostrar-mensaje:
+    runs-on: ubuntu-latest  # Sistema operativo del runner (servidor de GitHub)
+
+    steps:
+      - name: Clonar el código
+        uses: actions/checkout@v3  # Acción oficial para obtener el código fuente del repo
+
+      - name: Mostrar mensaje de éxito
+        run: echo "✅ Se hizo un push automático con Github Actions a la rama master. Bien hecho equipo 🎉"
